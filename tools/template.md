@@ -1,6 +1,8 @@
+> 更新时间：2025-08-14
+
 # 能力名称
 
-图片水印可以帮助您保护企业图片的版权、防止图片泄露等。在使用图片水印时，您需要将图片水印SDK嵌入到业务系统，或使用网页端的图片水印服务，给图片添加水印。在发生信息泄露时，可以通过水印信息定位出泄露人员。本文介绍如何使用图片水印功能。
+图片水印可以帮助您保护企业图像的版权、防止图片泄露、在出现泄露事件时进行溯源等。在使用图片水印时，您需要将图片水印SDK嵌入到业务系统或使用网页端的图片水印服务，给图片添加水印或提取其中的水印信息。本文介绍如何使用图片水印功能。
 
 ## 应用场景
 
@@ -8,6 +10,7 @@
 
 
 ## 环境需求
+
 - 操作系统：Windows / Linux / macOS
 - Python 版本：3.8+ / Java 版本：1.8+
 - 必要依赖：
@@ -23,19 +26,19 @@
 
 ## 安装
 
-SDK支持Python和Java
+我们提供 Python 和 Java 的 SDK，方便用户直接集成使用。此外，我们还提供详细的 API 文档，用户可以根据文档内容开发自定义的调用接口，以满足更灵活的业务需求。
 
 <!-- tabs:start -->
 
 #### **Python**
 
-```Python
+```python
 pip install sdk
 ```
 
 #### **Java**
 
-```Java
+```java
 <dependency>
   <groupId>com.subfunctionA</groupId>
   <artifactId>subfunctionA-sdk</artifactId>
@@ -49,7 +52,9 @@ pip install sdk
 
 ### 子功能A
 
-#### 使用方法
+子功能A的功能是给输入图片添加水印，并返回添加水印后的图片。
+
+#### SDK
 
 <!-- tabs:start -->
 
@@ -57,48 +62,62 @@ pip install sdk
 
 ```python
 # 1. 引入SDK
-from subfunctionA import Client
-# 2. 初始化客户端
-client = Client(api_key="YOUR_API_KEY")
+from sdk import funcA
+# 2. 调用接口
+funcA(input_image_path, output_image_path, api_key)
 ```
 
 #### **Java**
 
 ```java
 // 1. 引入SDK
-import com.subfunctionA.subfunctionA.Client;
-// 2. 初始化客户端
-Client client = new Client("YOUR_API_KEY");
+import com.subfunctionA.funcA;
+// 2. 调用接口
+funcA.funcA(input_image_path, output_image_path, api_key);
 ```
 
 <!-- tabs:end -->
 
-#### 输入输出格式
+#### **通用 API**
 
-**输入**：
+**请求 URL**
+
+请求URL及API_KEY取决于用户本地部署时的配置：
+
+`POST https://api.example.com/v1/subfunctionA`
+
+**请求头**
+
+`Content-Type: application/json`
+
+**请求体（JSON 格式）**
 
 ```json
 {
-  "param1": "string",
-  "param2": 123
+  "api_key": "API_KEY",
+  "input_image": "BASE64_ENCODED_IMAGE_STRING"
 }
 ```
 
-**输出**：
+**响应体（JSON 格式）**
 
 ```json
 {
-  "result": "string",
-  "status": "success"
+  "output_image": "BASE64_ENCODED_IMAGE_STRING"
 }
 ```
 
-**错误码**：
+**cURL 示例**
 
-| 错误码  | 描述         | 解决方案         |
-| ---- | ---------- | ------------ |
-| 1001 | 参数缺失       | 检查请求参数       |
-| 1002 | 无效的API Key | 更新或更换API Key |
+```bash
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d '{
+    "api_key": "API_KEY",
+    "input_image": "$(base64 input_image.jpg)"
+  }' \
+  https://api.example.com/v1/subfunctionA
+```
 
 ---
 

@@ -18,7 +18,7 @@ smart_scraper_graph = SmartScraperGraph(
             提取该页面的文档内容，要求如下：
             1. 以Markdown格式返回，不必强求还原网页格式，但必须保证是工整的多级文档。
             2. 只返回文档正文内容，不需要侧边栏和顶部导航栏，及其它无关的页面内容。
-            3. 去除文档中全部有关“阿里”、“阿里云”的字样。去除文档中所有超链接。
+            3. 去除文档中全部涉及特定公司或个人的内容。去除文档中所有超链接和图片。
             """,
     source="https://help.aliyun.com/zh/dsc/data-security-center/user-guide/data-de-identification",
     config=graph_config,
