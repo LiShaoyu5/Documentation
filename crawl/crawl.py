@@ -3,7 +3,7 @@ from scrapegraphai.graphs import SmartScraperGraph
 # Define the configuration for the scraping pipeline
 graph_config = {
     "llm": {
-        "api_key": "sk-0b164f671d4b462983b6af6b2d5ceeb7",
+        "api_key": "",
         "model": "deepseek-chat",
         "base_url": "https://api.deepseek.com/v1",
         # "model_provider": "deepseek",
