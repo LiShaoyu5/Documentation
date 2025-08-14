@@ -1,5 +1,7 @@
 # Docsify Template
 
+try to nav to [数据脱敏](tools/data-de-identification)
+
 > A simple [Docsify](https://github.com/docsifyjs/docsify/) template for creating Markdown-based documentation sites, with no build process required.
 
 ## Site Setup
